@@ -1,1 +1,2 @@
 # satellite-database
+A solution to the mandatory project of Database Systems (02170) made by Martin Handest [s224755] ([@tacecapSx](https://github.com/tacecapSx)), Oskar William Ulrich Holland [s224768] ([@pandekagee](https://github.com/pandekagee)) and Sigurd Fajstrup Jørgensen [s224760] ([@sigurdjoergensen](https://github.com/sigurdjoergensen)).
