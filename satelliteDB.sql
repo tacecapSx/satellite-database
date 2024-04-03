@@ -55,10 +55,10 @@ CREATE TABLE Satellite
     );
 
 CREATE TABLE Orbit
-	(orbit_id				VARCHAR(8),
-     satellite_id			VARCHAR(8),
-     PRIMARY KEY(orbit_id),
-     FOREIGN KEY(satellite_id) REFERENCES Satellite(satellite_id) ON DELETE SET NULL
+	(satellite_id			VARCHAR(8),
+     celestial_id			VARCHAR(8),
+     PRIMARY KEY(satellite_id),
+     FOREIGN KEY(celestial_id) REFERENCES CelestialBody(celestial_id) ON DELETE SET NULL
     );
 
 CREATE TABLE Employee
