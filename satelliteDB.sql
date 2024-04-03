@@ -35,12 +35,10 @@ CREATE TABLE Agency
 
 CREATE TABLE Mission
 	(mission_id				VARCHAR(8),
-     agency_id				VARCHAR(8),
      budget					DECIMAL(12,0),
      launch_date			DATE,
      nationality			VARCHAR(20),
-     PRIMARY KEY(mission_id),
-     FOREIGN KEY(agency_id) REFERENCES Agency(agency_id) ON DELETE SET NULL
+     PRIMARY KEY(mission_id)
 	);
 
 CREATE TABLE Satellite
