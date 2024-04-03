@@ -23,11 +23,11 @@ BEGIN
 END //
 
 # Get the celestial body a celestial body is orbiting from its identifier.
-CREATE PROCEDURE GetMissionSatellites(identifier VARCHAR(25))
+CREATE PROCEDURE GetMissionSatellites(mission_id VARCHAR(8))
 BEGIN
     SELECT sa.*
     FROM Satellite sa
-    JOIN Mission mi ON sa.mission_id = mi.mission_id;
+    JOIN Mission ON sa.mission_id = mission_id;
 END //
 
 DELIMITER ;
