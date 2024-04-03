@@ -44,8 +44,8 @@ CREATE TABLE Mission
 CREATE TABLE Satellite
 	(satellite_id			VARCHAR(8),
      mission_id				VARCHAR(8),
-     identifier				VARCHAR(25) NOT NULL,
-     mass					DECIMAL(5,0),
+     identifier				VARCHAR(60) NOT NULL,
+     mass					DECIMAL(10,0),
      fuel					DECIMAL(5,0),
      satellite_type         ENUM('Observational', 'Communication', 'Weather', 'Navigation', 'Scientific', 'Rescue', 'Space Station'),
      PRIMARY KEY(satellite_id),
