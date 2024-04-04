@@ -150,7 +150,7 @@ INSERT Agency VALUES
 ('00000002', 'China National Space Administration', 'CNSA', 11940000000, 'China'),
 ('00000003', 'Russian Federal Space Agency', 'Roscosmos', 1920000000, 'Russia'),
 ('00000004', 'Japan Aerospace Exploration Agency', 'JAXA', 1024645440, 'Japan'),
-('00000005', 'Indian Space Research Organisation', 'ISRO', 150393241659, 'India'),
+('00000005', 'Indian Space Research Organisation', 'ISRO', 1503932416, 'India'),
 ('00000006', 'Canada Space Agency', 'CSA', 453703650, 'Canada');
 
 INSERT Mission VALUES
