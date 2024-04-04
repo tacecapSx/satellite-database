@@ -24,14 +24,6 @@ BEGIN
 	WHERE co.celestial_id = (SELECT cb.celestial_id FROM CelestialBody cb WHERE cb.identifier = identifier);
 END //
 
-# Get the celestial body a celestial body is orbiting from its identifier.
-CREATE PROCEDURE GetMissionSatellites(mission_id VARCHAR(8))
-BEGIN
-    SELECT sa.*
-    FROM Satellite sa
-    JOIN Mission ON sa.mission_id = mission_id;
-END //
-
 # Get every mission that an agency has done from its acronym.
 CREATE PROCEDURE GetMissionsFromAgency(acronym VARCHAR(10))
 BEGIN
@@ -55,6 +47,5 @@ DELIMITER ;
 # Example usage
 #CALL GetOrbitingBodies('Sun');
 #CALL GetOrbitBody('Charon');
-#CALL GetMissionSatellites('00000000')
 #CALL GetMissionsFromAgency('Roscosmos');
 #CALL GetSatellitesFromMission('00000003')
