@@ -4,6 +4,7 @@ DROP PROCEDURE IF EXISTS GetMissionSatellites;
 DROP PROCEDURE IF EXISTS GetMissionsFromAgency;
 DROP PROCEDURE IF EXISTS GetSatellitesFromMission;
 DROP PROCEDURE IF EXISTS GetAgencyEmployees;
+DROP PROCEDURE IF EXISTS GetEmployeeMissions;
 
 DELIMITER //
 
@@ -52,6 +53,15 @@ BEGIN
 	WHERE em.agency_id = (SELECT ag.agency_id FROM Agency ag WHERE ag.acronym = acronym);
 END //
 
+# Get every mission that an employee has participated in.
+CREATE PROCEDURE GetEmployeeMissions(employee_id VARCHAR(8))
+BEGIN
+    SELECT mi.*
+	FROM Mission mi
+	JOIN Participates pa ON pa.mission_id = mi.mission_id
+	WHERE pa.employee_id = employee_id;
+END //
+
 DELIMITER ;
 
 # Example usage
@@ -59,4 +69,5 @@ DELIMITER ;
 #CALL GetOrbitBody('Charon');
 #CALL GetMissionsFromAgency('Roscosmos');
 #CALL GetSatellitesFromMission('00000003')
-CALL GetAgencyEmployees('NASA')
+#CALL GetAgencyEmployees('NASA')
+CALL GetEmployeeMissions('00000074')
