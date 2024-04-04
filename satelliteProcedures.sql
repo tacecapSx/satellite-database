@@ -2,6 +2,7 @@ DROP PROCEDURE IF EXISTS GetOrbitingBodies;
 DROP PROCEDURE IF EXISTS GetOrbitBody;
 DROP PROCEDURE IF EXISTS GetMissionSatellites;
 DROP PROCEDURE IF EXISTS GetMissionsFromAgency;
+DROP PROCEDURE IF EXISTS GetSatellitesFromMission;
 
 DELIMITER //
 
@@ -40,10 +41,20 @@ BEGIN
 	WHERE la.agency_id = (SELECT ag.agency_id FROM Agency ag WHERE ag.acronym = acronym);
 END //
 
+# Get every satellite that is part of a mission from its ID.
+CREATE PROCEDURE GetSatellitesFromMission(mission_id VARCHAR(8))
+BEGIN
+    SELECT sa.*
+	FROM Satellite sa
+	JOIN Mission mi ON sa.mission_id = mi.mission_id
+	WHERE sa.mission_id = mission_id;
+END //
+
 DELIMITER ;
 
 # Example usage
 #CALL GetOrbitingBodies('Sun');
 #CALL GetOrbitBody('Charon');
 #CALL GetMissionSatellites('00000000')
-CALL GetMissionsFromAgency('NASA')
+#CALL GetMissionsFromAgency('Roscosmos');
+#CALL GetSatellitesFromMission('00000003')
