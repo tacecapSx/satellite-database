@@ -3,6 +3,7 @@ DROP PROCEDURE IF EXISTS GetOrbitBody;
 DROP PROCEDURE IF EXISTS GetMissionSatellites;
 DROP PROCEDURE IF EXISTS GetMissionsFromAgency;
 DROP PROCEDURE IF EXISTS GetSatellitesFromMission;
+DROP PROCEDURE IF EXISTS GetAgencyEmployees;
 
 DELIMITER //
 
@@ -42,6 +43,15 @@ BEGIN
 	WHERE sa.mission_id = mission_id;
 END //
 
+# Get every employee belonging to an agency from its acronym.
+CREATE PROCEDURE GetAgencyEmployees(acronym VARCHAR(10))
+BEGIN
+    SELECT em.*
+	FROM Employee em
+	JOIN Agency ag ON em.agency_id = ag.agency_id
+	WHERE em.agency_id = (SELECT ag.agency_id FROM Agency ag WHERE ag.acronym = acronym);
+END //
+
 DELIMITER ;
 
 # Example usage
@@ -49,3 +59,4 @@ DELIMITER ;
 #CALL GetOrbitBody('Charon');
 #CALL GetMissionsFromAgency('Roscosmos');
 #CALL GetSatellitesFromMission('00000003')
+CALL GetAgencyEmployees('NASA')
