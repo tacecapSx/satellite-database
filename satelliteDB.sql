@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS satellitedb;
+CREATE DATABASE satellitedb;
+USE satellitedb;
+
 DROP TABLE IF EXISTS Launches;
 DROP TABLE IF EXISTS Participates;
 DROP TABLE IF EXISTS Employee;
@@ -38,7 +42,7 @@ CREATE TABLE Mission
      budget					DECIMAL(12,0),
      launch_date			DATE,
      launch_location		VARCHAR(20),
-     status                 ENUM('Ongoing', 'Concluded', 'Lost')
+     status                 ENUM('Ongoing', 'Concluded', 'Lost'),
      PRIMARY KEY(mission_id)
 	);
 
@@ -183,7 +187,7 @@ INSERT Satellite VALUES
 ('00000008', '00000007', 'Giotto', 960, 0, 'Observational'),
 ('00000009', '00000008', 'Landsat 8', 2623, 1111, 'Observational'),
 ('00000010', '00000009', 'Aqua', 3117, 0, 'Observational'),
-('00000011', '00000010', 'Kwangmyŏngsŏng-3 Unit 2', 100, null, 'Observational'),
+('00000011', '00000010', 'Kwangmyongsong-3 Unit 2', 100, null, 'Observational'),
 ('00000012', '00000011', 'Tiangong-1', 8506, null, 'Space Station'),
 ('00000013', '00000012', 'Terra', 4864, null, 'Scientific'),
 ('00000014', '00000013', 'Inmarsat-4A F4', 6649, null, 'Communication');
@@ -197,11 +201,11 @@ INSERT Orbit VALUES
 ('00000006', '00000005'),
 ('00000008', '00000000'),
 ('00000009', '00000003'),
-('000000010', '00000003'),
-('000000011', '00000003'),
-('000000012', '00000003'),
-('000000013', '00000003'),
-('000000014', '00000003');
+('00000010', '00000003'),
+('00000011', '00000003'),
+('00000012', '00000003'),
+('00000013', '00000003'),
+('00000014', '00000003');
 
 INSERT Launches VALUES
 ('00000003', '00000000'),
@@ -328,10 +332,10 @@ INSERT Employee VALUES
 ('00000097', '00000003', 'Luke Killers', 45500, 'Astrophysicist'),
 ('00000098', '00000001', 'Bartholemew Reddington', 21500, 'Astrophysicist'),
 ('00000099', '00000004', 'Humphrey Berwick', 26000, 'Astrophysicist'),
-('00000100', '00000007', 'Mun Chin-sŏk', 15000, 'Engineer'),
-('00000101', '00000007', 'Jo Pyong-sŏ', 12000, 'Researcher'),
+('00000100', '00000007', 'Mun Chin-sok', 15000, 'Engineer'),
+('00000101', '00000007', 'Jo Pyong-so', 12000, 'Researcher'),
 ('00000102', '00000007', 'Paek In-nam', 10000, 'Astrophysicist'),
-('00000103', '00000007', 'Byŏn Ju-song', 17000, 'Researcher'),
+('00000103', '00000007', 'Byon Ju-song', 17000, 'Researcher'),
 ('00000104', '00000007', 'Ri Ku-hwan', 17000, 'Technician'),
 ('00000105', '00000007', 'Sin Sol-lan', 18000, 'Technician'),
 ('00000106', '00000007', 'Kang Gil-gyun', 13000, 'Astrophysicist'),
@@ -339,7 +343,7 @@ INSERT Employee VALUES
 ('00000108', '00000007', 'An Tong-rae', 19000, 'Astrophysicist'),
 ('00000109', '00000007', 'Li Ji-hae', 15000, 'Researcher'),
 ('00000110', '00000007', 'Hwang Su-ung', 16000, 'Technician'),
-('00000111', '00000007', 'Jŏn Hye-hŭi', 11000, 'Engineer');
+('00000111', '00000007', 'Jon Hye-hui', 11000, 'Engineer');
 
 INSERT Participates VALUES
 ('00000093', '00000002'),
