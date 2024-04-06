@@ -103,22 +103,22 @@ INSERT CelestialBody VALUES
 ('00000007', 'Uranus',  86810000000000000000000000,   51118,  4000),
 ('00000008', 'Neptune', 102400000000000000000000000,  49244,  700),
 ('00000009', 'Pluto',   13090000000000000000000,      2377,   null),
-('00000010', 'Ganymede', null, 5270, null),
-('00000011', 'Titan',    null, 5150, null),
-('00000012', 'Callisto', null, 4820, null),
-('00000013', 'Io',       null, 3643, null),
-('00000014', 'Moon',     null, 3475, null),
-('00000015', 'Europa',   null, 3122, null),
-('00000016', 'Triton',   null, 2707, null),
-('00000017', 'Titania',  null, 1578, null),
-('00000018', 'Rhea',     null, 1529, null),
-('00000019', 'Oberon',   null, 1523, null),
-('00000020', 'Iapetus',  null, 1469, null),
-('00000021', 'Charon',   null, 1207, null),
-('00000022', 'Umbriel',  null, 1169, null),
-('00000023', 'Ariel',    null, 1158, null),
-('00000024', 'Dione',    null, 1125, null),
-('00000025', 'Tethys',   null, 1063, null);
+('00000010', 'Ganymede', 148190000000000000000000, 5270, null),
+('00000011', 'Titan',    134520000000000000000000, 5150, null),
+('00000012', 'Callisto', 107593800000000000000000, 4820, null),
+('00000013', 'Io',       89319000000000000000000, 3643, null),
+('00000014', 'Moon',     73476730900000000000000, 3475, null),
+('00000015', 'Europa',   47998400000000000000000, 3122, null),
+('00000016', 'Triton',   21389000000000000000000, 2707, null),
+('00000017', 'Titania',  3527000000000000000000, 1578, null),
+('00000018', 'Rhea',     2306500000000000000000, 1529, null),
+('00000019', 'Oberon',   3110400000000000000000, 1523, null),
+('00000020', 'Iapetus',  1805650000000000000000, 1469, null),
+('00000021', 'Charon',   1586000000000000000000, 1207, null),
+('00000022', 'Umbriel',  1288500000000000000000, 1169, null),
+('00000023', 'Ariel',    1270000000000000000000, 1158, null),
+('00000024', 'Dione',    1050000000000000000000, 1125, null),
+('00000025', 'Tethys',   617000000000000000000, 1063, null);
 
 INSERT CelestialOrbit VALUES
 # Planets, all orbiting the sun
@@ -229,9 +229,6 @@ INSERT Launches VALUES
 ('00000001', '00000013');
 
 INSERT Employee VALUES
-('00690000', '00000000', 'Martin Handest', 50000, 'Technician'),
-('10000000', '00000000', 'Oskar William Ulrich Holland', 1, 'Technician'),
-('10101010', '00000000', 'Sigurd Fajstrup Jørgensen', 49999, 'Technician'),
 ('00000000', '00000002', 'Lancelot Bristow', 16000, 'Technician'),
 ('00000001', '00000004', 'Marcus Haynes', 37500, 'Technician'),
 ('00000002', '00000005', 'Clement Osage', 6000, 'Researcher'),
