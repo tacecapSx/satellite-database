@@ -38,6 +38,7 @@ CREATE TABLE Mission
      budget					DECIMAL(12,0),
      launch_date			DATE,
      nationality			VARCHAR(20),
+     status                 ENUM('Ongoing', 'Concluded', 'Lost')
      PRIMARY KEY(mission_id)
 	);
 
@@ -151,17 +152,24 @@ INSERT Agency VALUES
 ('00000003', 'Russian Federal Space Agency', 'Roscosmos', 1920000000, 'Russia'),
 ('00000004', 'Japan Aerospace Exploration Agency', 'JAXA', 1024645440, 'Japan'),
 ('00000005', 'Indian Space Research Organisation', 'ISRO', 1503932416, 'India'),
-('00000006', 'Canada Space Agency', 'CSA', 453703650, 'Canada');
+('00000006', 'Canada Space Agency', 'CSA', 453703650, 'Canada'),
+('00000007', 'Korean Comittee of Space Technology', 'KCST', null, 'North Korea');
 
 INSERT Mission VALUES
-('00000000', null, '1957-10-04', 'Baikonur'),
-('00000001', 150000000000, '1998-11-20', 'Baikonur'),
-('00000002', 716600000, '2005-08-12', 'Cape Canaveral'),
-('00000003', null, '2024-03-20', 'Wenchang'),
-('00000004', 290000000, '2010-05-20', 'Tanegashima'),
-('00000005', 700000000, '2011-08-05', 'Cape Canaveral'),
-('00000006', 3260000000, '1997-11-15', 'Cape Canaveral'),
-('00000007', null, '1985-07-02', 'Guiana Space Centre');
+('00000000', null, '1957-10-04', 'Baikonur', 'Concluded'),
+('00000001', 150000000000, '1998-11-20', 'Baikonur', 'Ongoing'),
+('00000002', 716600000, '2005-08-12', 'Cape Canaveral', 'Ongoing'),
+('00000003', null, '2024-03-20', 'Wenchang', 'Ongoing'),
+('00000004', 290000000, '2010-05-20', 'Tanegashima', 'Ongoing'),
+('00000005', 700000000, '2011-08-05', 'Cape Canaveral', 'Ongoing'),
+('00000006', 3260000000, '1997-11-15', 'Cape Canaveral', 'Concluded'),
+('00000007', null, '1985-07-02', 'Guiana Space Centre', 'Concluded'),
+('00000008', 650000000, '2013-02-11', 'Santa Barbara', 'Ongoing'),
+('00000009', 952000000, '2002-05-04', 'Santa Barbara', 'Ongoing'),
+('00000010', null, '2012-12-12', 'North Korea', 'Ongoing'),
+('00000011', 8000000000, '2021-04-29', 'Wenchang', 'Ongoing'),
+('00000012', 1300000000, '1999-12-18', 'Santa Barbara', 'Ongoing'),
+('00000013', 648800100, '2013-07-25', 'Guinana Space Centre', 'Ongoing');
 
 INSERT Satellite VALUES
 ('00000000', '00000000', 'Sputnik 1', 84, null, 'Scientific'),
@@ -172,7 +180,13 @@ INSERT Satellite VALUES
 ('00000005', '00000004', 'Akatsuki', 320, null, 'Scientific'),
 ('00000006', '00000005', 'Juno', 1593, null, 'Scientific'),
 ('00000007', '00000006', 'Cassini-Huygens', 2523, null, 'Scientific'),
-('00000008', '00000007', 'Giotto', 960, 0, 'Observational');
+('00000008', '00000007', 'Giotto', 960, 0, 'Observational'),
+('00000009', '00000008', 'Landsat 8', 2623, 1111, 'Observational'),
+('00000010', '00000009', 'Aqua', 3117, 0, 'Observational'),
+('00000011', '00000010', 'Kwangmyŏngsŏng-3 Unit 2', 100, null, 'Observational'),
+('00000012', '00000011', 'Tiangong-1', 8506, null, 'Space Station'),
+('00000013', '00000012', 'Terra', 4864, null, 'Scientific'),
+('00000014', '00000013', 'Inmarsat-4A F4', 6649, null, 'Communication');
 
 INSERT Orbit VALUES
 ('00000001', '00000003'),
@@ -181,7 +195,13 @@ INSERT Orbit VALUES
 ('00000004', '00000014'),
 ('00000005', '00000002'),
 ('00000006', '00000005'),
-('00000008', '00000000');
+('00000008', '00000000'),
+('00000009', '00000003'),
+('000000010', '00000003'),
+('000000011', '00000003'),
+('000000012', '00000003'),
+('000000013', '00000003'),
+('000000014', '00000003');
 
 INSERT Launches VALUES
 ('00000003', '00000000'),
@@ -196,7 +216,13 @@ INSERT Launches VALUES
 ('00000000', '00000005'),
 ('00000000', '00000006'),
 ('00000001', '00000006'),
-('00000001', '00000007');
+('00000001', '00000007'),
+('00000000', '00000008'),
+('00000000', '00000009'),
+('00000007', '00000010'),
+('00000002', '00000011'),
+('00000000', '00000012'),
+('00000001', '00000013');
 
 INSERT Employee VALUES
 ('00690000', '00000000', 'Martin Handest', 50000, 'Technician'),
@@ -301,7 +327,19 @@ INSERT Employee VALUES
 ('00000096', '00000002', 'Chloe Plummer', 46500, 'Astrophysicist'),
 ('00000097', '00000003', 'Luke Killers', 45500, 'Astrophysicist'),
 ('00000098', '00000001', 'Bartholemew Reddington', 21500, 'Astrophysicist'),
-('00000099', '00000004', 'Humphrey Berwick', 26000, 'Astrophysicist');
+('00000099', '00000004', 'Humphrey Berwick', 26000, 'Astrophysicist'),
+('00000100', '00000007', 'Mun Chin-sŏk', 15000, 'Engineer'),
+('00000101', '00000007', 'Jo Pyong-sŏ', 12000, 'Researcher'),
+('00000102', '00000007', 'Paek In-nam', 10000, 'Astrophysicist'),
+('00000103', '00000007', 'Byŏn Ju-song', 17000, 'Researcher'),
+('00000104', '00000007', 'Ri Ku-hwan', 17000, 'Technician'),
+('00000105', '00000007', 'Sin Sol-lan', 18000, 'Technician'),
+('00000106', '00000007', 'Kang Gil-gyun', 13000, 'Astrophysicist'),
+('00000107', '00000007', 'Son Ye-sun', 21000, 'Researcher'),
+('00000108', '00000007', 'An Tong-rae', 19000, 'Astrophysicist'),
+('00000109', '00000007', 'Li Ji-hae', 15000, 'Researcher'),
+('00000110', '00000007', 'Hwang Su-ung', 16000, 'Technician'),
+('00000111', '00000007', 'Jŏn Hye-hŭi', 11000, 'Engineer');
 
 INSERT Participates VALUES
 ('00000093', '00000002'),
@@ -343,4 +381,16 @@ INSERT Participates VALUES
 ('00000039', '00000007'),
 ('00000074', '00000000'),
 ('00000074', '00000007'),
-('00000082', '00000004');
+('00000082', '00000004'),
+('00000100', '00000010'),
+('00000101', '00000010'),
+('00000102', '00000010'),
+('00000103', '00000010'),
+('00000104', '00000010'),
+('00000105', '00000010'),
+('00000106', '00000010'),
+('00000107', '00000010'),
+('00000108', '00000010'),
+('00000109', '00000010'),
+('00000110', '00000010'),
+('00000111', '00000010');
