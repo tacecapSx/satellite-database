@@ -87,8 +87,6 @@ CREATE TABLE Launches
      FOREIGN KEY(agency_id) REFERENCES Agency(agency_id) ON DELETE SET NULL,
      FOREIGN KEY(mission_id) REFERENCES Mission(mission_id) ON DELETE SET NULL
 	);
-    
-
 
 # Insert data!
 
