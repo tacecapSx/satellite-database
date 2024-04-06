@@ -37,7 +37,7 @@ CREATE TABLE Mission
 	(mission_id				VARCHAR(8),
      budget					DECIMAL(12,0),
      launch_date			DATE,
-     nationality			VARCHAR(20),
+     launch_location		VARCHAR(20),
      status                 ENUM('Ongoing', 'Concluded', 'Lost')
      PRIMARY KEY(mission_id)
 	);
@@ -56,7 +56,7 @@ CREATE TABLE Satellite
 CREATE TABLE Orbit
 	(satellite_id			VARCHAR(8),
      celestial_id			VARCHAR(8),
-     PRIMARY KEY(satellite_id),
+     FOREIGN KEY(satellite_id) REFERENCES Satellite(satellite_id) ON DELETE SET NULL,
      FOREIGN KEY(celestial_id) REFERENCES CelestialBody(celestial_id) ON DELETE SET NULL
     );
 
