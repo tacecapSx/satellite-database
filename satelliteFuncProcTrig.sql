@@ -1,3 +1,32 @@
+##########################
+	#6. SQL DATA QUERIES
+##########################
+# Get all celestial bodies orbiting Jupiter.
+SELECT cb.*
+FROM CelestialBody cb
+JOIN CelestialOrbit co ON cb.celestial_id = co.celestial_id
+WHERE co.orbiting_id = (SELECT cb.celestial_id FROM CelestialBody cb WHERE cb.identifier = 'Jupiter');
+
+# Get every ongoing mission that NASA is part of.
+SELECT mi.*
+FROM (
+    SELECT *
+    FROM Launches NATURAL JOIN Mission
+) AS lami
+JOIN Agency ag ON lami.agency_id = ag.agency_id
+JOIN Mission mi ON lami.mission_id = mi.mission_id
+WHERE ag.acronym = 'NASA' AND mi.status = 'Ongoing';
+
+# Get every satellite that is part of the mission with id 00000003.
+SELECT sa.*
+FROM Satellite sa
+JOIN Mission mi ON sa.mission_id = mi.mission_id
+WHERE sa.mission_id = '00000003';
+
+##########################
+	#7. SQL PROGRAMMING
+##########################
+
 DROP FUNCTION IF EXISTS CalculateTotalSalaryForAgency;
 
 DROP PROCEDURE IF EXISTS InsertMission;
@@ -7,14 +36,12 @@ DROP TRIGGER IF EXISTS AgencyBudgetTrigger;
 
 DELIMITER //
 
-## FUNCTIONS, PROCEDURE AND TRIGGERS
-
 #####################
 	#FUNCTIONS
 #####################
 
 CREATE FUNCTION CalculateTotalSalaryForAgency(agency_id_parameter VARCHAR(8))
-RETURNS DECIMAL(10, 0)
+RETURNS DECIMAL(12, 0)
 BEGIN
     DECLARE total_salary DECIMAL(12, 0);
     
@@ -26,7 +53,7 @@ BEGIN
 END//
 
 #####################
-	#PROCEDUREs
+	#PROCEDURES
 #####################
 
 # insert mission
@@ -75,41 +102,6 @@ END;
 //
 
 DELIMITER ;
-
-# Example usage
-#CalculateTotalSalaryForAgency(Agency)
-#SELECT CalculateTotalSalaryForAgency('00000001') AS TotalSalaryForAgency;
-
-#InsertMission (mission id, budget, date, launch location, status)
-#CALL InsertMission('00000014', 79000000000, '2025-04-20', 'Launch Location', 'Ongoing');
-
-#InsertLaunch (agency, mission)
-#CALL InsertLaunch ('00000001', '00000014');
-
-
-##########################
-	#6. SQL DATA QUERIES
-##########################
-SELECT cb.*
-FROM CelestialBody cb
-JOIN CelestialOrbit co ON cb.celestial_id = co.celestial_id
-WHERE co.orbiting_id = (SELECT cb.celestial_id FROM CelestialBody cb WHERE cb.identifier = 'Jupiter');
-
-
-SELECT mi.*
-FROM (
-    SELECT *
-    FROM Launches NATURAL JOIN Mission
-) AS lami
-JOIN Agency ag ON lami.agency_id = ag.agency_id
-JOIN Mission mi ON lami.mission_id = mi.mission_id
-WHERE ag.acronym = 'NASA' AND mi.status = 'Ongoing';
-
-
-SELECT sa.*
-FROM Satellite sa
-JOIN Mission mi ON sa.mission_id = mi.mission_id
-WHERE sa.mission_id = '00000003';
 
 ###########################
 	#8. SQL TABLE MODIFICATION
