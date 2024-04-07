@@ -2,16 +2,6 @@ DROP DATABASE IF EXISTS satellitedb;
 CREATE DATABASE satellitedb;
 USE satellitedb;
 
-DROP TABLE IF EXISTS Launches;
-DROP TABLE IF EXISTS Participates;
-DROP TABLE IF EXISTS Employee;
-DROP TABLE IF EXISTS Orbit;
-DROP TABLE IF EXISTS Satellite;
-DROP TABLE IF EXISTS Mission;
-DROP TABLE IF EXISTS Agency;
-DROP TABLE IF EXISTS CelestialOrbit;
-DROP TABLE IF EXISTS CelestialBody;
-
 CREATE TABLE CelestialBody
 	(celestial_id			VARCHAR(8),
 	 identifier				VARCHAR(15) NOT NULL,
