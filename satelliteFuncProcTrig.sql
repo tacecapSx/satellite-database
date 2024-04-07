@@ -85,3 +85,42 @@ DELIMITER ;
 
 #InsertLaunch (agency, mission)
 #CALL InsertLaunch ('00000001', '00000014');
+
+
+##########################
+	#6. SQL DATA QUERIES
+##########################
+SELECT cb.*
+FROM CelestialBody cb
+JOIN CelestialOrbit co ON cb.celestial_id = co.celestial_id
+WHERE co.orbiting_id = (SELECT cb.celestial_id FROM CelestialBody cb WHERE cb.identifier = 'Jupiter');
+
+
+SELECT mi.*
+FROM (
+    SELECT *
+    FROM Launches NATURAL JOIN Mission
+) AS lami
+JOIN Agency ag ON lami.agency_id = ag.agency_id
+JOIN Mission mi ON lami.mission_id = mi.mission_id
+WHERE ag.acronym = 'NASA' AND mi.status = 'Ongoing';
+
+
+SELECT sa.*
+FROM Satellite sa
+JOIN Mission mi ON sa.mission_id = mi.mission_id
+WHERE sa.mission_id = '00000003';
+
+###########################
+	#8. SQL TABLE MODIFICATION
+###########################
+
+UPDATE Mission set status =
+    CASE
+    WHEN launch_date < '2000-01-01' THEN 'Lost'
+    ELSE 'Concluded'
+    END
+WHERE mission_id > '00000000';
+
+
+DELETE FROM Mission WHERE NOT status = 'Ongoing' AND mission_id > '00000000';
